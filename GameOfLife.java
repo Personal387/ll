@@ -1,16 +1,15 @@
+//Ahmed Abdallah
+//student# 7348733
+//Date; 10-3-2022 
+
 package GameOfLife;
-
-//Student Name:
-//student ID
-//Date 
-
 
 public class GameOfLife
 {
 
     public static void main(String[] args)
     {
-        int M = 15, N = 15;
+        int A = 15, B = 15;
 
         int[][] grid = { { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -33,9 +32,9 @@ public class GameOfLife
 
 
         System.out.println("Present Population");
-        for (int i = 0; i < M; i++)
+        for (int i = 0; i < A; i++)
         {
-            for (int j = 0; j < N; j++)
+            for (int j = 0; j < B; j++)
             {
                 if (grid[i][j] == 0)
                     System.out.print(".");
@@ -45,49 +44,49 @@ public class GameOfLife
             System.out.println();
         }
         System.out.println();
-        newPopulation(grid, M, N);
+        theNewPop(grid, A, B);
     }
 
 
-    static void newPopulation(int[][] grid, int M, int N)
+    static void theNewPop(int[][] grid, int A, int B)
     {
-        int[][] show = new int[M][N];
+        int[][] show = new int[A][B];
 
-        for (int n = 0; n < M; n++)
+        for (int b = 0; b < A; b++)
         {
-            for (int m = 0; m < N; m++)
+            for (int a = 0; a < B; a++)
             {
-                int newPopulation = 0;
+                int theNewPop = 0;
                 for (int i = -1; i <= 1; i++)
                     for (int j = -1; j <= 1; j++)
-                        if ((n+i>=0 && n+i<M) && (m+j>=0 && m+j<N))
-                            newPopulation += grid[n + i][m + j];
+                        if ((b+i>=0 && b+i<A) && (a+j>=0 && a+j<B))
+                            theNewPop += grid[b + i][a + j];
 
-                newPopulation -= grid[n][m];
-
-
+                theNewPop -= grid[b][a];
 
 
-                if ((grid[n][m] == 1) && (newPopulation < 2))
-                    show[n][m] = 0;
 
-                else if ((grid[n][m] == 1) && (newPopulation > 3))
-                    show[n][m] = 0;
 
-                else if ((grid[n][m] == 0) && (newPopulation == 3
+                if ((grid[b][a] == 1) && (theNewPop < 2))
+                    show[b][a] = 0;
+
+                else if ((grid[b][a] == 1) && (theNewPop > 3))
+                    show[b][a] = 0;
+
+                else if ((grid[b][a] == 0) && (theNewPop == 3
                 ))
-                    show[n][m] = 1;
+                    show[b][a] = 1;
 
                 else
-                    show[n][m] = grid[n][m];
+                    show[b][a] = grid[b][a];
             }
         }
 
 
         System.out.println("New Population");
-        for (int i = 0; i < M; i++)
+        for (int i = 0; i < A; i++)
         {
-            for (int j = 0; j < N; j++)
+            for (int j = 0; j < B; j++)
             {
                 if (show[i][j] == 0)
                     System.out.print(".");
